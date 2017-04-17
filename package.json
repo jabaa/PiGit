@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server",
-    "build": "gulp",
-    "extract-i18n": "ng-xi18n"
+    "start": "concurrently \"nodemon server\" \"gulp\""
   },
   "keywords": [],
   "author": "",
@@ -41,6 +39,7 @@
     "@types/express": "^4.0.35",
     "@types/node": "^7.0.12",
     "@types/systemjs": "^0.20.2",
+    "concurrently": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.1.0",
     "gulp-pug": "^3.3.0",
