@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { RepositoryDetailsInterface } from '../../repository-details/models/repository-details.interface';
 
@@ -10,4 +10,6 @@ import { RepositoryDetailsInterface } from '../../repository-details/models/repo
 export class RepositoryListItemComponent {
   @Input() item: RepositoryDetailsInterface;
   @Input() index: number;
+
+  @Output() openDeleteConfirmation = new EventEmitter<RepositoryDetailsInterface>();
 }

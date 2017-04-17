@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 import { RepositoryListService } from '../services/repository-list.service';
 import { RepositoryListInterface } from '../models/repository-list.interface';
@@ -12,6 +12,8 @@ export class RepositoryListComponent {
   public list: RepositoryListInterface;
   public page = 0;
   public itemsPerPage = 10;
+
+  public modalEvent = new EventEmitter<{method: any, data: RepositoryDetailsInterface}>();
 
   constructor(private repositoryListService: RepositoryListService) {
     this.reloadList();
@@ -27,6 +29,10 @@ export class RepositoryListComponent {
 
   public goToPage(page: number) {
     this.page = page;
+  }
+
+  public openDeleteConfirmation(repository: RepositoryDetailsInterface) {
+    this.modalEvent.emit({method: 'show', data: repository});
   }
 
   public reloadList() {
