@@ -5,8 +5,8 @@ import { RepositoryListInterface } from '../models/repository-list.interface';
 @Pipe({
   name: 'repositoryListPagination'
 })
-export class RepositoryListPagination implements PipeTransform {
-  transform(list: RepositoryListInterface[], page?: number, itemsPerPage?: number) {
+export class RepositoryListPaginationPipe implements PipeTransform {
+  transform(list: RepositoryListInterface, page?: number, itemsPerPage?: number) {
     if (!list) {
       list = [];
     }

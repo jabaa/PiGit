@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { RepositoryListComponent } from './components/repository-list.component';
 import { RepositoryListItemComponent } from './components/repository-list-item.component';
-import { ListService } from './services/list.service';
-import { RepositoryListPagination } from './pipes/repository-list-pagination.pipe';
+import { RepositoryListService } from './services/repository-list.service';
+import { RepositoryListPaginationPipe } from './pipes/repository-list-pagination.pipe';
 
 @NgModule({
   imports: [
@@ -15,11 +15,11 @@ import { RepositoryListPagination } from './pipes/repository-list-pagination.pip
   declarations: [
     RepositoryListComponent,
     RepositoryListItemComponent,
-    RepositoryListPagination
+    RepositoryListPaginationPipe,
   ],
   providers: [
-    ListService,
-    RepositoryListPagination
+    RepositoryListService,
+    RepositoryListPaginationPipe
   ],
   exports: [
     RepositoryListComponent

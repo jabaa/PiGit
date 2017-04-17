@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ListService } from '../services/list.service';
+import { RepositoryListService } from '../services/repository-list.service';
 import { RepositoryListInterface } from '../models/repository-list.interface';
 
 @Component({
@@ -12,11 +12,8 @@ export class RepositoryListComponent {
   public page = 0;
   public itemsPerPage = 10;
 
-  constructor(private listService: ListService) {
-    this.listService.getList()
-      .subscribe((response: RepositoryListInterface[]) => {
-        this.list = response;
-      });
+  constructor(private repositoryListService: RepositoryListService) {
+    this.reloadList();
   }
 
   public get showPagination(): boolean {
@@ -29,5 +26,12 @@ export class RepositoryListComponent {
 
   public goToPage(page: number) {
     this.page = page;
+  }
+
+  public reloadList() {
+    this.repositoryListService.getList()
+      .subscribe((response: RepositoryListInterface) => {
+        this.list = response;
+      });
   }
 }
