@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectID } from 'mongodb';
 import * as path from 'path';
 import * as assert from 'assert';
 import * as fallback from 'express-history-api-fallback'
@@ -28,22 +28,52 @@ MongoClient.connect(DATABASE_URL, (err, database) => {
   });
 });
 
-app.put('/api', (req, res) => {
-  console.log(req.body);
-  collection.insertOne(req.body, (err, result) => {
+app.get('/api/repositories', (req, res) => {
+  collection.find({}).toArray((err, docs) => {
+    res.send(docs);
+  });
+});
+
+app.get('/api/repository/:id', (req, res) => {
+  collection.findOne({_id: new ObjectID(req.params.id)}).then((docs) => {
+    if (docs) {
+      res.send(docs);
+    } else {
+      res.status(404);
+      res.send('Repository not found');
+    }
+  });
+});
+
+app.post('/api/repository', (req, res) => {
+  collection.insert({name: req.body.name}, (err, result) => {
     if (err) {
       res.send(false);
       return console.log(err);
     }
-    console.log('saved to database');
     res.send(true);
   });
 });
 
-app.get('/api', (req, res) => {
-  collection.find({}).toArray((err, docs) => {
-    res.send(docs);
-  });
+app.put('/api/repository/:id', (req, res) => {
+  collection.findOneAndUpdate({_id: new ObjectID(req.params.id)},
+    {$set: {name: req.body.name}}, {}, (err, result) => {
+      if (err) {
+        res.send(false);
+        return console.log(err);
+      }
+      res.send(true);
+    });
+});
+
+app.delete('/api/repository/:id', (req, res) => {
+  collection.remove({_id: new ObjectID(req.params.id)}, (err, result) => {
+      if (err) {
+        res.send(false);
+        return console.log(err);
+      }
+      res.send(true);
+    });
 });
 
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
