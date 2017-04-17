@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { RepositoryListInterface } from '../models/repository-list.interface';
+import { RepositoryDetailsInterface } from '../../repository-details/models/repository-details.interface';
 
 @Component({
   moduleId: module.id,
@@ -8,6 +8,6 @@ import { RepositoryListInterface } from '../models/repository-list.interface';
   templateUrl: './repository-list-item.component.html'
 })
 export class RepositoryListItemComponent {
-  @Input() item: RepositoryListInterface;
+  @Input() item: RepositoryDetailsInterface;
   @Input() index: number;
 }

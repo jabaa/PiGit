@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 
 import { RepositoryListService } from '../services/repository-list.service';
 import { RepositoryListInterface } from '../models/repository-list.interface';
+import { RepositoryDetailsInterface } from '../../repository-details/models/repository-details.interface';
 
 @Component({
   moduleId: module.id,
   templateUrl: './repository-list.component.html'
 })
 export class RepositoryListComponent {
-  public list: RepositoryListInterface[];
+  public list: RepositoryListInterface;
   public page = 0;
   public itemsPerPage = 10;
 
