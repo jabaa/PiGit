@@ -1,6 +1,6 @@
 div(class="container-fluid")
-    form
+    form([formGroup]="repositoryForm")
         div(class="form-group")
             label(for="name") Name
-            input(id="name", type="text", class="form-control", placeholder="Name")
-        button Save
+            input(id="name", type="text", class="form-control", placeholder="Name", [formControlName]="'name'")
+        button([disabled]="repositoryForm.invalid", (click)="save()") Save
