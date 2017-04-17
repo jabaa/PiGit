@@ -9,10 +9,10 @@ nav(class="navbar navbar-default")
             a(class="navbar-brand") {{title}}
         div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
             ul(class="nav navbar-nav")
-                li(class="active")
-                    a Repository List
+                li([routerLinkActive]="['active']", [routerLinkActiveOptions]="{exact: true}")
+                    a([routerLink]="['']") Repository List
                         span(class="sr-only") (current)
             ul(class="nav navbar-nav navbar-right")
-                li
+                li([routerLinkActive]="['active']", [routerLinkActiveOptions]="{exact: true}")
                     a([routerLink]="['repository']") Add Repository
 router-outlet
