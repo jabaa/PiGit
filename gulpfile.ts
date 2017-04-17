@@ -11,7 +11,7 @@ const APP_DIST = path.join('client', 'dist');
 const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('default', () => {
-  gulp.watch(path.join(APP_SRC, '**'), 'build');
+  gulp.watch(path.join(APP_SRC, '**'), ['build']);
 });
 
 gulp.task('build', ['ts', 'pug', 'sass', 'assets']);
