@@ -77,5 +77,5 @@ app.delete('/api/repository/:id', (req, res) => {
 });
 
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
-app.use(express.static(path.join(__dirname, '..', 'app', 'dist')));
-app.use(fallback(path.join(__dirname, '..', 'app', 'dist', 'index.html')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(fallback(path.join(__dirname, '..', 'client', 'dist', 'index.html')));

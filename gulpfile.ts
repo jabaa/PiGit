@@ -5,12 +5,16 @@ import * as pug from 'gulp-pug';
 import * as sass from 'gulp-sass';
 import * as sourcemaps from 'gulp-sourcemaps';
 
-const APP_SRC = path.join('app', 'src');
-const APP_DIST = path.join('app', 'dist');
+const APP_SRC = path.join('client', 'src');
+const APP_DIST = path.join('client', 'dist');
 
 const tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('default', ['ts', 'pug', 'sass', 'assets']);
+gulp.task('default', () => {
+  gulp.watch(path.join(APP_SRC, '**'), 'build');
+});
+
+gulp.task('build', ['ts', 'pug', 'sass', 'assets']);
 
 gulp.task('ts', () => {
   gulp.src(path.join(APP_SRC, '**', '*.ts'))
