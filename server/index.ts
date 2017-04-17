@@ -8,7 +8,10 @@ import * as fallback from 'express-history-api-fallback'
 const app = express();
 
 const PORT = 8000;
-const DATABASE_URL = 'mongodb://localhost:27017/test';
+const MONGODB_ADDRESS = process.env.MONGODB_PORT_27017_TCP_ADDR || 'localhost';
+const MONGODB_PORT = process.env.MONGODB_PORT_27017_TCP_PORT || '27017';
+const MONGODB_DATABASE = 'test';
+const MONGODB_URL = 'mongodb://' + MONGODB_ADDRESS + ':' + MONGODB_PORT + '/' + MONGODB_DATABASE;
 const TABLE_NAME = 'test';
 
 let db;
@@ -17,11 +20,11 @@ let collection;
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
-MongoClient.connect(DATABASE_URL, (err, database) => {
+MongoClient.connect(MONGODB_URL, (err, database) => {
   assert.equal(null, err, err);
   db = database;
   collection = db.collection(TABLE_NAME);
-  console.log('Connected to database ' + DATABASE_URL);
+  console.log('Connected to database ' + MONGODB_URL);
 
   app.listen(PORT, () => {
     console.log('Listening on port ' + PORT);
