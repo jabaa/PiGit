@@ -46,7 +46,8 @@ export class RepositoryDetailsComponent implements OnInit {
     if (this.repositoryForm.controls['id'].value) {
       let repository: RepositoryDetailsInterface = {
         _id: this.repositoryForm.controls['id'].value,
-        name: this.repositoryForm.controls['name'].value
+        name: this.repositoryForm.controls['name'].value,
+        owner: 'jabaa'
       };
       this.repositoryDetailsService.updateRepositoryDetails(repository)
         .subscribe((response: boolean) => {
@@ -56,7 +57,8 @@ export class RepositoryDetailsComponent implements OnInit {
         });
     } else {
       let repository: RepositoryDetailsInterface = {
-        name: this.repositoryForm.controls['name'].value
+        name: this.repositoryForm.controls['name'].value,
+        owner: 'jabaa'
       };
       this.repositoryDetailsService.createRepository(repository)
         .subscribe((response: boolean) => {
