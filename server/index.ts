@@ -83,9 +83,14 @@ app.delete('/api/repository/:id', (req, res) => {
 });
 
 app.post('/api/member/login', (req, res) => {
-  repositories.find({}).toArray((err, docs) => {
-    res.send(docs);
-  });
+  console.log(req.body);
+  let username = req.body.username;
+  let password = req.body.password;
+  if (username === 'username1' && password === 'Password1') {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));

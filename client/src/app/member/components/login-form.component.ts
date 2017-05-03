@@ -15,13 +15,13 @@ export class LoginFormComponent {
   constructor(private formBuilder: FormBuilder,
               private memberService: MemberService) {
     this.loginFormGroup = this.formBuilder.group({
-      name: '',
+      username: '',
       password: ''
     });
   }
 
   public login() {
-    this.memberService.login(this.loginFormGroup.controls['name'].value, this.loginFormGroup.controls['password'].value)
+    this.memberService.login(this.loginFormGroup.controls['username'].value, this.loginFormGroup.controls['password'].value)
       .subscribe((result: boolean) => {
 
       });

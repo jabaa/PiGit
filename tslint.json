@@ -7,7 +7,7 @@
     ],
     "curly": true,
     "eofline": true,
-    "experimentalDcorator": true,
+    "experimentalDecorators": true,
     "forin": true,
     "indent": [
       true,

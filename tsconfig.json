@@ -7,10 +7,10 @@
     "target": "es6"
   },
   "include": [
-    "app/src/**/*.ts"
+    "client/src/**/*.ts",
+    "server"
   ],
   "exclude": [
-    "node_modules",
-    "server"
+    "node_modules"
   ]
 }

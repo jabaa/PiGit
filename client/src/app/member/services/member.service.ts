@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 export class MemberService {
   constructor(private http: Http) {}
 
-  public login(login: string, password: string): Observable<any> {
-    return this.http.post('api/login', {name, password})
+  public login(username: string, password: string): Observable<any> {
+    return this.http.post('/api/member/login', {username, password})
       .map((response: Response) => response.json());
   }
 }

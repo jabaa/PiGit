@@ -2,15 +2,15 @@ div(class="row")
     div(class="col-md-12")
         form(class="form" role="form" id="login-nav", [formGroup]="loginFormGroup")
             div(class="form-group")
-                label(class="sr-only" for="login-name") Email address
-                input(type="text" class="form-control" id="login-name" placeholder="Name", [formControlName]="'name'" required)
+                label(class="sr-only" for="login-username") Email address
+                input(type="text" class="form-control" id="login-username" placeholder="Name", [formControlName]="'username'" required)
             div(class="form-group")
                 label(class="sr-only" for="login-password") Password
                 input(type="password" class="form-control" id="login-password" placeholder="Password", [formControlName]="'password'" required)
             div(class="help-block text-right")
                 a Forget the password ?
             div(class="form-group")
-                button(type="submit" class="btn btn-primary btn-block") Sign in
+                button(type="submit", class="btn btn-primary btn-block", (click)="login()") Sign in
             div(class="checkbox")
                 label
                     input(type="checkbox")
