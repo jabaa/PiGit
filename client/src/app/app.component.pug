@@ -15,4 +15,9 @@ nav(class="navbar navbar-default")
             ul(class="nav navbar-nav navbar-right")
                 li([routerLinkActive]="['active']", [routerLinkActiveOptions]="{exact: true}")
                     a([routerLink]="['repository']") Add Repository
+                li(class="dropdown")
+                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Dropdown
+                        span(class="caret")
+                    ul(class="dropdown-menu", id="login-dp")
+                        app-login-form
 router-outlet
