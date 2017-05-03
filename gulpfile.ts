@@ -10,7 +10,7 @@ const APP_DIST = path.join('client', 'dist');
 
 const tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('default', () => {
+gulp.task('default', ['build'], () => {
   gulp.watch(path.join(APP_SRC, '**'), ['build']);
 });
 
